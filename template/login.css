@@ -8,17 +8,17 @@ body {
 }
 
 #logo {
-    margin-left: 15px;
-    margin-top:15px;
+    margin-left: 1%;
+    margin-top:1%;
 }
 .slogan {
-    max-width: 400px;
-    font-size: 80px; 
-    margin-left:120px;
-    margin-top: 50px;
+    width: 10%;
+    font-size: 500%; 
+    margin-left:7%;
+    margin-top: 8%;
     font-family: verdana;
     color:#c7dbf9;
-    font-weight: 800
+    font-weight: 800;
 }
 
 .container{
@@ -28,7 +28,7 @@ body {
     background-color: rgba(52,73,94,0.7);
     border-radius: 10px;
     margin:0 auto;
-    margin-top: 100px;
+    margin-top: -270px;
     margin-right: 100px;
 }
 .container img{
@@ -70,4 +70,45 @@ a {
 a:hover {
     color: coral;
     font-weight:bold;
+}
+@media(max-width:1000px) {  
+body {
+    background: url(images/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    background-size:cover;
+    margin: 0;
+}  
+#logo {
+    margin-left: 1%;
+    margin-top:1%;
+}
+.slogan {
+    max-width: 30%;
+    font-size: 200%; 
+    margin-left:7%;
+    margin-top: 2%;
+    font-family: verdana;
+    color:#c7dbf9;
+    font-weight: 800;
+}
+
+.container{
+    width: 400px;
+    height: 350px;
+    text-align: center;
+    background-color: rgba(52,73,94,0.7);
+    border-radius: 10px;
+    margin:0 auto;
+    margin-top:60px;
+    margin-right: 100px;
+    margin-left: 70px;
+}
+.container img{
+    width: 120px;
+    height:120px;
+    margin-top:-60px;
+    margin-bottom:30px;
+}
+
+
 }
