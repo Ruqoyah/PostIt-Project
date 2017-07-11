@@ -2,22 +2,25 @@
   "development": {
     "username": "postgres",
     "password": "oriyomi123",
-    "database": "postit_app_development",
+    "database": "postit",
     "host": "127.0.0.1",
+    "port": 5433,
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "oriyomi123",
-    "database": "postit_app_test",
+    "database": "postit",
     "host": "127.0.0.1",
+    "port": 5433,
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "oriyomi123",
-    "database": "postit_app_production",
+    "database": "postit",
     "host": "127.0.0.1",
+    "port": 5433,
     "dialect": "postgres"
   }
 }
