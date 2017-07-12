@@ -8,17 +8,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    groupusers: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
   }, {
     classMethods: {
       associate: (models) => {
-        Groups.belongsTo(models.Users, {
-          foreignKey: 'userId',
-          as: 'groups',
-        });
+        Groups.belongsToMany(models.Users,
+          { through: 'GroupUsers', foreignKey: 'groupId' });
       }
     }
   });

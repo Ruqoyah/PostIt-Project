@@ -1,72 +1,66 @@
 const Groups = require('../models').Groups;
+const GroupUsers = require('../models').GroupUsers;
+
 // create a group
 module.exports = {
 
   createGroup(req, res) {
     if (!req.body.groupname) {
-      res.status(400).send({ message: "Enter group name" });
+      res.status(400).send({ message: 'Enter group name' });
     } else {
-      groups
+      Groups
         .findOne({
           where: {
             groupname: req.body.groupname
           },
         })
-        .then(group => {
+        .then((group) => {
           if (group) {
-            res.status(400).send({ message: "Group name already exist" });
+            res.status(400).send({ message: 'Group name already exist' });
           } else {
-            groups.create({
+            Groups.create({
               groupname: req.body.groupname,
               groupdescription: req.body.groupdescription,
-              id: userId
             })
-              .then(group => {
-                if (!group) {
-                  res.status(401).send({ success: false, message: 'Authentication failed. User not found.' });
-                } else {
-                  res.send(400).send({ message: "Group valid" });
-                }
-              })
-              .then(group => res.status(201).send({
+              .then(createGroup => res.status(201).send({
                 success: true,
-                groupname: group.groupname,
-                message: "Group created successfully"
+                groupname: createGroup.groupname,
+                message: 'Group created successfully'
               }))
               .catch(error => res.status(400).send(error));
-           }
-            })
-        }
-      }
+          }
+        });
+    }
   },
 
-    //add member
-    addGroupUser(req, res) {
-      if (!req.body.username) {
-        res.status(401).send({ message: "Enter username" })
-      } else {
-        users.findOne({
-          where: {
-            username: req.body.username
-          },
-        })
-          .then(group_user =>  {
-          if (group_user) {
-            res.status(400).send({ message: "User is already a group user " });
+  // add other users
+  addOtherUser(req, res) {
+    if (!req.body.username) {
+      res.status(401).send({ message: 'Enter username' });
+    } else {
+      GroupUsers.findOne({
+        where: {
+          username: req.body.username
+        },
+      })
+        .then((groupuser) => {
+          if (groupuser) {
+            res.status(400).send({ message: 'User is already a group user ' });
           } else {
-            group_users
+            GroupUsers
               .create({
-                group_id: req.body.group_id,
-                user_id: req.body.user_id
+                groupId: req.params.groupId,
+                username: req.body.username
               })
-              .then(group_user => res.status(201).send({
+              .then(addUser => res.status(201).send({
                 success: true,
-                group_id: message.group_id,
-                message: "User Added successfully"
+                group_id: addUser.group_id,
+                message: 'User Added successfully'
               }))
               .catch(error => res.status(400).send(error));
-               }
-            })
-        }
-      })
-  },
+          }
+        });
+    }
+  }
+
+};

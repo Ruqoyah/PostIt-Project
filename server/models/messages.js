@@ -16,8 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         Messages.belongsTo(models.Users, {
-          // foreignKey: 'userId',
-          // as: 'users',
+          foreignKey: 'userId',
         });
       }
     }
