@@ -1,11 +1,8 @@
 import usersController from '../controllers/users';
 import groupsController from '../controllers/groups';
+import messagesController from '../controllers/messages';
 
 module.exports = (app) => {
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the Todos API!',
-  }));
-
   // signup
   app.post('/api/user/signup', usersController.signup);
 
@@ -17,4 +14,7 @@ module.exports = (app) => {
 
   // add other user
   app.post('/api/group/:groupId/user', groupsController.addOtherUser);
+
+  // post messages
+  app.post('/api/group/:groupId/message', messagesController.postMessage);
 };
