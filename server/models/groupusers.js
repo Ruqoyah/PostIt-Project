@@ -3,7 +3,19 @@ module.exports = (sequelize, DataTypes) => {
     groupusers: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    groupId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    message: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
   }, {
     classMethods: {
       associate: (models) => {

@@ -4,10 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     groupdescription: {
       type: DataTypes.STRING,
       allowNull: false
@@ -20,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         Groups.belongsTo(models.Users, {
-          // foreignKey: 'groupId',
-          // as: 'groups',
+          foreignKey: 'userId',
+          as: 'groups',
         });
       }
     }
