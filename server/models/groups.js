@@ -1,29 +1,28 @@
 module.exports = (sequelize, DataTypes) => {
   const Groups = sequelize.define('Groups', {
-    groupid: {
-      type: DataTypes.INT,
-      allowNull: false,
-    },
     groupname: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     groupdescription: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     groupusers: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     }
   }, {
     classMethods: {
       associate: (models) => {
-        // associations can be defined here
+        Groups.belongsTo(models.Users, {
+          // foreignKey: 'groupId',
+          // as: 'groups',
+        });
       }
     }
   });

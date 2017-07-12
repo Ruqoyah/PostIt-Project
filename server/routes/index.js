@@ -1,9 +1,13 @@
-const create_accountsController = require('../controllers').create_accounts;
+const usersController = require('../controllers').users;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the Postits API!',
+    message: 'Welcome to the Todos API!',
   }));
 
-  app.post('/api/create_accounts', create_accountsController.create);
+  // signup
+  app.post('/api/user/signup', usersController.signup);
+
+  // signin
+  app.post('/api/user/signin', usersController.signin);
 };

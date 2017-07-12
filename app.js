@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'path';
+import logger from 'morgan';
 import bodyParser from 'body-parser';
 
 // import home from "./server/index";
@@ -15,14 +15,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'template')));
-const port = process.env.PORT || 3000;
-// Require our routes into the application.
-// app.use('/', home);
-// app.use('/users', users);
 
-// app.set('port', (process.env.PORT || 3000));
-// app.listen(port, () => {
-//   console.log('Server started on port');
-// });
+// Require our routes into the application.
+require('./server/routes')(app);
+
+app.get('*', (req, res) => res.status(200).send({
+  message: 'Welcome to the beginning of nothingness.',
+}));
+
+
 export default app;
