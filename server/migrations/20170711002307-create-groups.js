@@ -33,5 +33,5 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Groups'),
+  down: queryInterface => queryInterface.dropTable('Groups'),
 };

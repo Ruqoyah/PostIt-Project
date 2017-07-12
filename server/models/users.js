@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       associate: (models) => {
         Users.belongsTo(models.Groups, {
           foreignKey: 'groupId',
-          as: 'users',
+          as: 'user',
         });
       }
     }

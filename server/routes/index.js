@@ -1,4 +1,5 @@
-const usersController = require('../controllers').users;
+//const usersController = require('../controllers').users;
+import usersController from '../controllers/users';
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({

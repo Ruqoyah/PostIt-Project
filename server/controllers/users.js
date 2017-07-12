@@ -2,7 +2,6 @@ const Users = require('../models').Users;
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
-const salt = bcrypt.genSaltSync(saltRounds);
 
 module.exports = {
   // create user
@@ -13,7 +12,7 @@ module.exports = {
           username: req.body.username
         },
       })
-      .then(user => {
+      .then((user) => {
         if (user) {
           res.send({ message: 'Username already exists' });
         } else {
@@ -23,24 +22,30 @@ module.exports = {
                 email: req.body.email
               },
             })
-            .then(user => {
-              if (user) {
+            .then((createdUser) => {
+              if (createdUser) {
                 res.send({ message: 'Email already exists' });
+              } 
+              if (req.body.password !== req.body.cpassword) {
+                res.send({ message: 'Password does not match' });
               } else {
-                Users.create({
-                  username: req.body.username,
-                  firstname: req.body.firstname,
-                  lastname: req.body.lastname,
-                  email: req.body.email,
-                  password: bcrypt.hashSync(req.body.password, salt)
-                })
-
-                  .then(user => res.status(201).send({
-                    success: true,
-                    message: 'User has been signed up successfully',
-                    username: user.username
-                  }))
-                  .catch(error => res.status(400).send(error));
+                bcrypt.hash(req.body.password, saltRounds)
+                  .then((hash) => {
+                    Users.create({
+                      username: req.body.username,
+                      firstname: req.body.firstname,
+                      lastname: req.body.lastname,
+                      email: req.body.email,
+                      password: hash,
+                      cpassword: hash
+                    })
+                      .then(display => res.status(201).send({
+                        success: true,
+                        message: 'User has been signed up successfully',
+                        username: display.username
+                      }))
+                      .catch(error => res.status(400).send(error));
+                  });
               }
             });
         }
