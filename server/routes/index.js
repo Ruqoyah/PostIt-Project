@@ -17,4 +17,7 @@ module.exports = (app) => {
 
   // post messages
   app.post('/api/group/:groupId/message', messagesController.postMessage);
+
+  // retrieve messages
+  app.get('/api/group/:groupId/message', messagesController.findMessages);
 };

@@ -30,7 +30,7 @@ module.exports = {
       .create({
         groupId: req.params.groupId,
         message: req.body.message,
-        userId
+        userId: req.body.userId
       })
       .then(message => res.status(201).send({
         message: (message.message)
@@ -39,7 +39,7 @@ module.exports = {
   },
 
   // retrieve
-  findMessage(req, res) {
+  findMessages(req, res) {
     Messages
       .findAll({
         where: { groupId: req.params.groupId }
