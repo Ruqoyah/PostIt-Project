@@ -1,8 +1,12 @@
+import express from 'express';
 import usersController from '../controllers/users';
 import groupsController from '../controllers/groups';
 import messagesController from '../controllers/messages';
 
-module.exports = (app) => {
+const app = express.Router();
+
+
+
   // signup
   app.post('/api/user/signup', usersController.signup);
 
@@ -20,4 +24,5 @@ module.exports = (app) => {
 
   // retrieve messages
   app.get('/api/group/:groupId/message', messagesController.findMessages);
-};
+
+  export default app;

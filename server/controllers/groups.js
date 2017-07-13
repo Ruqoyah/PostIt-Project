@@ -1,7 +1,9 @@
-const Groups = require('../models').Groups;
-const GroupUsers = require('../models').GroupUsers;
+import model from '../models';
 
-module.exports = {
+const Groups = model.Groups;
+const GroupUsers = model.GroupUsers;
+
+export default {
   // create a group
   createGroup(req, res) {
     if (!req.body.groupname) {
@@ -22,14 +24,6 @@ module.exports = {
               groupdescription: req.body.groupdescription,
               userId: req.body.userId
             })
-              .then((user) => {
-                if (!user) {
-                  res.status(401).send({ success: false,
-                    message: 'User not found' });
-                } else {
-                  res.send(400).send({ message: 'Group valid' });
-                }
-              })
               .then(createGroup => res.status(201).send({
                 success: true,
                 groupname: createGroup.groupname,

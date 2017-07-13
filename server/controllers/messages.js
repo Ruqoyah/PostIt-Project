@@ -1,6 +1,8 @@
-const Messages = require('../models').Messages;
+import model from '../models';
 
-module.exports = {
+const Messages = model.Messages;
+
+export default {
   createMessage: (req, res) => {
     if (!req.body.messages) {
       res.send({ message: 'Enter message.' });
@@ -25,7 +27,6 @@ module.exports = {
 
   // post message
   postMessage(req, res) {
-    const userId = req.decoded;
     Messages
       .create({
         groupId: req.params.groupId,

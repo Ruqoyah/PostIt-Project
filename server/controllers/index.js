@@ -1,5 +1,10 @@
-const users = require('./users');
+import users from './users';
+import messages from './messages';
+import groups from './groups';
 
-module.exports = {
+
+export default {
   users,
+  messages,
+  groups
 };

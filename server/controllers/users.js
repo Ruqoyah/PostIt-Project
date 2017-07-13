@@ -1,10 +1,12 @@
-const Users = require('../models').Users;
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import model from '../models';
+
+const Users = model.Users;
 
 const saltRounds = 10;
 
-module.exports = {
+export default {
   // create user
   signup(req, res) {
     Users
