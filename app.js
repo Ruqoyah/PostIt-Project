@@ -3,16 +3,16 @@ import bodyParser from 'body-parser';
 import routes from './server/routes';
 
 // Set up the express app
-const router = express();
+const app = express();
 
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
-// Require our routes into the routerlication.
-router.use(routes);
+// Require our routes into the application.
+app.use(routes);
 
 
-export default router;
+export default app;

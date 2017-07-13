@@ -3,28 +3,6 @@ import model from '../models';
 const Messages = model.Messages;
 
 export default {
-  createMessage: (req, res) => {
-    if (!req.body.messages) {
-      res.send({ message: 'Enter message.' });
-    } else {
-      const userId = req.body.userId;
-      const message = {
-        body: req.body.message,
-        groupId: req.body.groupId,
-        userId: req.body.userId
-      };
-      Messages
-        .create({
-          message: req.body.message,
-          userId: req.body.userId
-        })
-        .then(sentMessage => res.status(201).send({
-          sentMessage: 'Message sent'
-        }))
-        .catch(error => res.status(400).send(error));
-    }
-  },
-
   // post message
   postMessage(req, res) {
     Messages

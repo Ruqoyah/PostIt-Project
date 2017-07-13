@@ -71,12 +71,10 @@ export default {
         if (!bcrypt.compareSync(req.body.password, user.password)) {
           res.json({ success: false, message: 'Wrong password' });
         } else {
-          const id = user.id;
-          const token = jwt.sign(id, 'superSecret');
+          req.session.user = user;
           res.status(201).send({
             success: true,
             message: 'User successfully signed in!',
-            token
           });
         }
       });
