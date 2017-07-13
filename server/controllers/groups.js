@@ -54,7 +54,7 @@ export default {
                 groupId: req.params.groupId,
                 username: req.body.username
               })
-              .then(addUser => res.status(201).send({
+              .then(addUser => res.status(200).send({
                 success: true,
                 group_id: addUser.group_id,
                 message: 'User Added successfully'

@@ -14,5 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Require our routes into the application.
 app.use(routes);
 
+app.listen(process.env.PORT || 8000, () => {
+  console.log('server running');
+});
+
 
 export default app;
