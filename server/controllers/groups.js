@@ -1,9 +1,8 @@
 const Groups = require('../models').Groups;
 const GroupUsers = require('../models').GroupUsers;
 
-// create a group
 module.exports = {
-
+  // create a group
   createGroup(req, res) {
     if (!req.body.groupname) {
       res.status(400).send({ message: 'Enter group name' });
@@ -21,7 +20,16 @@ module.exports = {
             Groups.create({
               groupname: req.body.groupname,
               groupdescription: req.body.groupdescription,
+              userId: req.body.userId
             })
+              .then((user) => {
+                if (!user) {
+                  res.status(401).send({ success: false,
+                    message: 'User not found' });
+                } else {
+                  res.send(400).send({ message: 'Group valid' });
+                }
+              })
               .then(createGroup => res.status(201).send({
                 success: true,
                 groupname: createGroup.groupname,

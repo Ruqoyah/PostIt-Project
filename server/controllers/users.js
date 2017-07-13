@@ -1,5 +1,6 @@
 const Users = require('../models').Users;
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
 
@@ -25,7 +26,7 @@ module.exports = {
             .then((createdUser) => {
               if (createdUser) {
                 res.send({ message: 'Email already exists' });
-              } 
+              }
               if (req.body.password !== req.body.cpassword) {
                 res.send({ message: 'Password does not match' });
               } else {
@@ -64,15 +65,17 @@ module.exports = {
       .then((user) => {
         if (!user) {
           res.status(401).send({ success: false, message: 'User not found' });
+        }
+        if (!bcrypt.compareSync(req.body.password, user.password)) {
+          res.json({ success: false, message: 'Wrong password' });
         } else {
-          if (!bcrypt.compareSync(req.body.password, user.password)) {
-            res.json({ success: false, message: 'Wrong password' });
-          } else {
-            res.status(201).send({
-              success: true,
-              message: 'User successfully signed in!',
-            });
-          }
+          const id = user.id;
+          const token = jwt.sign(id, 'superSecret');
+          res.status(201).send({
+            success: true,
+            message: 'User successfully signed in!',
+            token
+          });
         }
       });
   }

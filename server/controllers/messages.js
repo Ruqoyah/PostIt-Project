@@ -16,8 +16,8 @@ module.exports = {
           message: req.body.message,
           userId: req.body.userId
         })
-        .then(message => res.status(201).send({
-          message: 'Message sent'
+        .then(sentMessage => res.status(201).send({
+          sentMessage: 'Message sent'
         }))
         .catch(error => res.status(400).send(error));
     }
