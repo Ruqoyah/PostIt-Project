@@ -1,18 +1,12 @@
 {
 "development": {
-   "username": "postgres",
-   "password": "oriyomi123",
-   "database": "postit",
-   "host": "127.0.0.1",
-   "port": 5433,
-   "dialect": "postgres"
+   "use_env_variable": "mydb"
+ },
+ "test": {
+   "use_env_variable": "mydb"
  },
  "production": {
-   "username": "postgres",
-   "password": "oriyomi123",
-   "database": "postit",
-   "host": "127.0.0.1",
-   "dialect": "postgres"
+   "use_env_variable": "DATABASE_URL"
  }
   
 }
