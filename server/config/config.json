@@ -1,5 +1,5 @@
 {
-  "development": {
+"development": {
    "username": "postgres",
    "password": "oriyomi123",
    "database": "postit",
@@ -8,11 +8,11 @@
    "dialect": "postgres"
  },
  "production": {
-   "username": "dkhveyeexeqrez",
-   "password": "e46d050cefd1399ecc79ffa09c38cac7c5302c31974da0b6a5052a4f2234a8f3",
-   "database": "d33ok6r85bqamr",
-   "host": "ec2-107-20-250-195.compute-1.amazonaws.com",
+   "username": "postgres",
+   "password": "oriyomi123",
+   "database": "postit",
+   "host": "127.0.0.1",
    "dialect": "postgres"
  }
-    
+  
 }

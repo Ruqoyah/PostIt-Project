@@ -47,7 +47,7 @@ export default {
       })
         .then((groupuser) => {
           if (groupuser) {
-            res.status(400).send({ message: 'User is already a group user ' });
+            res.status(400).send({ message: 'User is already a group user' });
           } else {
             GroupUsers
               .create({

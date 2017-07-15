@@ -35,7 +35,7 @@ app.post('/api/group/:groupId/user', groupsController.addOtherUser);
 app.post('/api/group/:groupId/message', messagesController.postMessage);
 
 // retrieve messages
-app.get('/api/group/:groupId/message', messagesController.findMessages);
+app.get('/api/group/:groupId/messages', messagesController.findMessages);
 
 
 export default app;

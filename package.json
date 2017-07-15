@@ -3,7 +3,8 @@
   "description": "PostIt is a simple application that allows friend and colleagues create groups for notifications",
   "main": "app.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node ./app.js"
+    "start": "./node_modules/.bin/babel-node ./app.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register"
   },
   "keywords": [
     "PostIt",
